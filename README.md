@@ -1,0 +1,4 @@
+installer
+=========
+
+auto install
