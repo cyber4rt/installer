@@ -107,8 +107,8 @@ wget -O /etc/openvpn/1194-client.ovpn "https://raw.github.com/arieonline/autoscr
 sed -i $MYIP2 /etc/openvpn/1194-client.ovpn;
 PASS=`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 15 | head -n 1`;
 useradd -M -s /bin/false c-mp3nk
-echo "admin:$PASS" | chpasswd
-echo "admin" > pass.txt
+echo "c-mp3nk:$PASS" | chpasswd
+echo "c-mp3nk" > pass.txt
 echo "$PASS" >> pass.txt
 tar cf client.tar 1194-client.ovpn pass.txt
 cp client.tar /home/vps/public_html/
@@ -237,7 +237,7 @@ echo "./user-limit.sh 2"
 echo ""
 echo "Account Default (utk SSH dan VPN)"
 echo "---------------"
-echo "User     : admin"
+echo "User     : c-mp3nk"
 echo "Password : $PASS"
 echo ""
 echo "Fitur lain"
