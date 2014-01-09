@@ -106,7 +106,7 @@ cd /etc/openvpn/
 wget -O /etc/openvpn/1194-client.ovpn "https://raw.github.com/arieonline/autoscript/master/conf/1194-client.conf"
 sed -i $MYIP2 /etc/openvpn/1194-client.ovpn;
 PASS=`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 15 | head -n 1`;
-useradd -M -s /bin/false KangArie
+useradd -M -s /bin/false c-mp3nk
 echo "admin:$PASS" | chpasswd
 echo "admin" > pass.txt
 echo "$PASS" >> pass.txt
