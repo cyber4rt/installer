@@ -190,16 +190,27 @@ chkconfig webmin on
 
 # downlaod script
 cd
-wget -O speedtest_cli.py https://raw.github.com/sivel/speedtest-cli/master/speedtest_cli.py
+wget -O speedtest_cli.py "https://raw.github.com/sivel/speedtest-cli/master/speedtest_cli.py"
 wget -O bench-network.sh "https://raw.github.com/arieonline/autoscript/master/conf/bench-network.sh"
+wget -O ps_mem.py "https://raw.github.com/pixelb/ps_mem/master/ps_mem.py"
+wget -O limit.sh "https://raw.github.com/arieonline/autoscript/master/conf/limit.sh"
 curl http://script.jualssh.com/user-login.sh > user-login.sh
 curl http://script.jualssh.com/user-expire.sh > user-expire.sh
 curl http://script.jualssh.com/user-limit.sh > user-limit.sh
+echo "0 0 * * * root /root/user-expire.sh" > /etc/cron.d/user-expire
+sed -i '$ i\screen -AmdS limit /root/limit.sh' /etc/rc.local
+sed -i '$ i\screen -AmdS limit /root/limit.sh' /etc/rc.d/rc.local
 chmod +x bench-network.sh
 chmod +x speedtest_cli.py
+chmod +x ps_mem.py
 chmod +x user-login.sh
 chmod +x user-expire.sh
 chmod +x user-limit.sh
+chmod +x limit.sh
+
+# cron
+service crond start
+chkconfig crond on
 
 # finalisasi
 chown -R nginx:nginx /home/vps/public_html
@@ -213,10 +224,12 @@ service dropbear restart
 service fail2ban restart
 service squid restart
 service webmin restart
+service crond start
+chkconfig crond on
 
 # info
 clear
-echo "cyber4rt ssh"
+echo "cyber4rt | server |"
 echo "==============================================="
 echo ""
 echo "Service"
@@ -229,6 +242,7 @@ echo "badvpn   : badvpn-udpgw port 7300"
 echo ""
 echo "Script"
 echo "------"
+echo "./ps_mem.py"
 echo "./speedtest_cli.py --share"
 echo "./bench-network.sh"
 echo "./user-login.sh"
