@@ -194,20 +194,9 @@ wget -O speedtest_cli.py "https://raw.github.com/sivel/speedtest-cli/master/spee
 wget -O bench-network.sh "https://raw.github.com/arieonline/autoscript/master/conf/bench-network.sh"
 wget -O ps_mem.py "https://raw.github.com/pixelb/ps_mem/master/ps_mem.py"
 wget -O limit.sh "https://raw.github.com/arieonline/autoscript/master/conf/limit.sh"
-curl http://script.jualssh.com/user-login.sh > user-login.sh
-curl http://script.jualssh.com/user-expire.sh > user-expire.sh
-curl http://script.jualssh.com/user-limit.sh > user-limit.sh
-echo "0 0 * * * root /root/user-expire.sh" > /etc/cron.d/user-expire
-sed -i '$ i\screen -AmdS limit /root/limit.sh' /etc/rc.local
-sed -i '$ i\screen -AmdS limit /root/limit.sh' /etc/rc.d/rc.local
-chmod +x bench-network.sh
-chmod +x speedtest_cli.py
-chmod +x ps_mem.py
-chmod +x user-login.sh
-chmod +x user-expire.sh
-chmod +x user-limit.sh
-chmod +x limit.sh
-
+wget "https://raw.github.com/cyber4rt/installer/master/loginview.sh"
+sed -i 's/auth.log/secure/g' loginview.sh
+chmod +x loginview.sh
 # cron
 service crond start
 chkconfig crond on
@@ -245,9 +234,7 @@ echo "------"
 echo "./ps_mem.py"
 echo "./speedtest_cli.py --share"
 echo "./bench-network.sh"
-echo "./user-login.sh"
-echo "./user-expire.sh"
-echo "./user-limit.sh 2"
+echo "./loginview.sh"
 echo ""
 echo "Account Default (utk SSH dan VPN)"
 echo "---------------"
