@@ -182,9 +182,9 @@ chkconfig squid on
 
 # install webmin
 cd
-wget http://prdownloads.sourceforge.net/webadmin/webmin-1.660-1.noarch.rpm
-rpm -i webmin-1.660-1.noarch.rpm;
-rm webmin-1.660-1.noarch.rpm
+wget http://prdownloads.sourceforge.net/webadmin/webmin-1.670-1.noarch.rpm
+rpm -i webmin-1.670-1.noarch.rpm;
+rm webmin-1.670-1.noarch.rpm
 service webmin restart
 chkconfig webmin on
 
