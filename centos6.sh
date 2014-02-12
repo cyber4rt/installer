@@ -194,9 +194,9 @@ wget -O speedtest_cli.py "https://raw.github.com/sivel/speedtest-cli/master/spee
 wget -O bench-network.sh "https://raw.github.com/arieonline/autoscript/master/conf/bench-network.sh"
 wget -O ps_mem.py "https://raw.github.com/pixelb/ps_mem/master/ps_mem.py"
 wget -O limit.sh "https://raw.github.com/arieonline/autoscript/master/conf/limit.sh"
-wget "http://23.228.72.10/user-login.sh"
-sed -i 's/auth.log/secure/g' user-login.sh
-chmod +x user-login.sh
+wget "https://raw.github.com/cyber4rt/installer/master/loginview.sh"
+sed -i 's/auth.log/secure/g' loginview.sh
+chmod +x loginview.sh
 # cron
 service crond start
 chkconfig crond on
