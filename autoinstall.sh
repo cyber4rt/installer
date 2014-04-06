@@ -77,9 +77,9 @@ sed -i '$ i\screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300' /etc/
 chmod +x /usr/bin/badvpn-udpgw
 screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300
 # install squid
-yum -y install squid3
-wget -O /etc/squid3/squid.conf "https://raw.github.com/cyber4rt/installer/master/squid3.conf"
-sed -i $MYIP2 /etc/squid3/squid.conf;
+yum -y install squid
+wget -O /etc/squid/squid.conf "https://raw.github.com/cyber4rt/installer/master/squid3.conf"
+sed -i $MYIP2 /etc/squid/squid.conf;
 service squid3 restart
 
 # install webmin
